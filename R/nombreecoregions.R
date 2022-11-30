@@ -4,7 +4,7 @@ returndata<-function(){
   ecor_sp<-readr::read_csv(here::here("data", "wildfinder", "wildfinder-ecoregions_species.csv"))
   mammals<-readr::read_csv(here::here("data", "wildfinder", "wildfinder-mammals_list.csv"))
   
-  mammals<-mammals[mammals$family=="Ursidae",]
+  mammals<-mammals[mammals$family=="Ursidae",] #Family,]
   
   datajoined<- merge(
     ecor_list,
@@ -16,7 +16,7 @@ returndata<-function(){
   return(datajoined)  
 }
 
-nombreecoregions<-function(){
+nombreecoregions<-function(returndata){
   colspecies=datajoined$species
   sp<-unique(colspecies)
   dataspeciesecor<-matrix(nrow=length(sp),ncol=2)
@@ -27,4 +27,9 @@ nombreecoregions<-function(){
     dataspeciesecor[i,1]<-sphere
   }
   return(as.data.frame(dataspeciesecor))
+}
+
+plotspecoreg<-function(nombreecoregions){
+  plot(as.numeric(dataecoregion$V2)~as.factor(dataecoregion$V1))->plotspecoreg
+  return(plotspecoreg)
 }
