@@ -15,6 +15,7 @@ remotes::install_deps(upgrade = "never")
 
 pkgload::load_all()
 
+## Call function to count the number of ecorregions
 
 ## Run Project ----
 
